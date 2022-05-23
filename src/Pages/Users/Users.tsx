@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { AuthService, UserService } from "../../Api"
 import { CustomButton, CustomDropdown, TextInput } from "../../Components"
+import Sidebar from "../../Layout/Sidebar"
 import { User } from "../../Types"
 import { Logger } from "../../Utils"
 
@@ -26,6 +27,8 @@ const Users: React.FC = ()=>{
        };
 
     return(<>
+    <Sidebar/>
+    <h1 className="text-3xl font-bold underline">Hello Client</h1>
        <p>{user?.first_name}</p>
        <p>{user?.last_name}</p>
        <p>{user?.email}</p>
@@ -47,6 +50,7 @@ const Users: React.FC = ()=>{
          <TextInput hint="Password" type="password" handleChange={(value)=>{
           
         }}/>
+         {/* <input type="checkbox" className="accent-pink-500" checked> Customized</input> */}
        <CustomDropdown items={[{id:40, name:'Male'},{id:45, name:'Female'},{id:49, name:'Others'}]}/>
        <CustomButton label="Submit" loading={loading} onClick={loadData}/>
 
