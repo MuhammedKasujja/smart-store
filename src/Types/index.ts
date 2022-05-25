@@ -32,3 +32,19 @@ export interface IChangePassword{
     password_confirmation: string
 }
 
+export enum Status {
+    idle = 'idle',
+    loading = 'loading',
+    succeeded = 'succeeded',
+    failed =   'failed',
+}
+
+export interface AppState<T>{
+    status: Status,
+    error: string | null,
+    message: string | null, 
+    data: T
+}
+
+
+
