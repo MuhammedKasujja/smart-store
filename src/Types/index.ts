@@ -46,5 +46,14 @@ export interface AppState<T>{
     data: T
 }
 
+export interface IUser {
+    id: number,
+    name: string
+}
 
-
+export interface Message{
+    id: number,
+    message: string,
+    user: IUser,
+    file?: string
+}

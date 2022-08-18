@@ -5,7 +5,7 @@ import { CustomButton, CustomDropdown, TextInput } from "../../Components"
 import Sidebar from "../../Layout/Sidebar"
 import { RootState } from "../../Store"
 import { add, loginUser } from "../../Store/features/usersReducers"
-import { Status, User } from "../../Types"
+import { Message, Status, User } from "../../Types"
 import { Logger } from "../../Utils"
 
 
@@ -15,6 +15,27 @@ const Users: React.FC = () => {
    const [loggingIn, setLoggingIn] = useState<boolean>(false)
 
    const [name, setName] = useState<string>('')
+
+   const message: Message = {
+      id: 56,
+      message: 'Kasujja',
+      user: {
+         id: 453,
+         name: 'Muhammed'
+      },
+   }
+
+   const message2: Message = {
+      id: 56,
+      message: 'Kasujja',
+      user: {
+         id: 453,
+         name: 'Muhammed'
+      },
+      file: 'path'
+   }
+
+   const messages = [message, message2]
 
    const dispatch = useDispatch()
 
@@ -44,9 +65,27 @@ const Users: React.FC = () => {
       setName('')
    }
 
+   const tableRow = () => {
+      return users.data.names.map((n) => <tr key={n.toString()}><td>{n}</td>
+      <td>Muhammed@mail.com</td>
+      <td>0774262923</td>
+      </tr>)
+   }
+
    return (<>
-      <Sidebar />
       <h1 className="text-3xl font-bold underline">Hello Client</h1>
+      <table className="table-auto w-full m-2 responsive">
+         <thead>
+            <tr>
+               <th>Name</th>
+               <th>Email</th>
+               <th>Mobile</th>
+            </tr>
+         </thead>
+         <tbody>
+            {tableRow()}
+         </tbody>
+      </table>
       {users.data.names.map((n) => <p key={n.toString()}>{n}</p>)}
       <hr />
       <p>{user?.first_name}</p>
