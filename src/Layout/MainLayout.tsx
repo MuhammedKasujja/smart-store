@@ -10,14 +10,14 @@ const MainContent: React.FC = () => {
     }
     return (
         <>
-            <div className="bg-slate-200 p-5 h-screen overflow-hidden">
+            <div className="bg-slate-200 p-5 h-screen overflow-hidden pb">
                 <div className="flex gap-4 h-full">
                     {isOpen &&
                         <Sidebar />
                     }
                     {/* Main Content */}
-                    <div className={`${isOpen ? 'w-full' : 'w-screen'} bg-slate-300 p-4 rounded-lg`}>
-                        <p className="cursor-pointer" onClick={()=>setOpen((isOpen) => !isOpen)}>X</p>
+                    <div className={`${isOpen ? 'w-full' : 'w-screen'} bg-slate-300 p-4  rounded-lg overflow-y-auto `}>
+                        <p className="cursor-pointer" onClick={() => setOpen((isOpen) => !isOpen)}>X</p>
                         <Outlet />
                     </div>
                 </div>

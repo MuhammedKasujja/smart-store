@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { UserService } from "../../Api"
-import { CustomButton, CustomDropdown, TextInput } from "../../Components"
-import Sidebar from "../../Layout/Sidebar"
+import { CustomButton, CustomDropdown, FileInput, RadioButton, TextInput } from "../../Components"
 import { RootState } from "../../Store"
 import { add, loginUser } from "../../Store/features/usersReducers"
 import { Message, Status, User } from "../../Types"
@@ -10,9 +9,15 @@ import { Logger } from "../../Utils"
 
 
 const Users: React.FC = () => {
+   // const maritalStatus = [
+   //    'Married', 'Single', 'Divorced'
+   // ]
    const [user, setUser] = useState<User>()
    const [loading, setLoading] = useState<boolean>(false)
    const [loggingIn, setLoggingIn] = useState<boolean>(false)
+   const [profileImage, setProfileImage] = useState<File>()
+   const [gender, setGender] = useState<string>('49')
+   const [maritalStatus, setMaritalStatus] = useState<string>()
 
    const [name, setName] = useState<string>('')
 
@@ -60,21 +65,23 @@ const Users: React.FC = () => {
    };
 
    const saveUser = () => {
-      if (!name) return
-      dispatch(add(name))
-      setName('')
+      Logger.message({ key: 'gender', data: gender })
+
+      // if (!name) return
+      // dispatch(add(name))
+      // setName('')
    }
 
    const tableRow = () => {
       return users.data.names.map((n) => <tr key={n.toString()}><td>{n}</td>
-      <td>Muhammed@mail.com</td>
-      <td>0774262923</td>
+         <td>Muhammed@mail.com</td>
+         <td>0774262923</td>
       </tr>)
    }
 
    return (<>
       <h1 className="text-3xl font-bold underline">Hello Client</h1>
-      <table className="table-auto w-full m-2 responsive">
+      <table className="table-auto w-full m-2">
          <thead>
             <tr>
                <th>Name</th>
@@ -110,15 +117,25 @@ const Users: React.FC = () => {
 
       }} />
 
+      <FileInput label={"Profile"} onChange={(file) => setProfileImage(file)} />
+
       <TextInput hint="User Name" value={name} handleChange={(value) => {
          setName(value)
       }} />
       {/* <input type="checkbox" className="accent-pink-500" checked> Customized</input> */}
-      <CustomDropdown items={[{ id: 40, name: 'Male' }, { id: 45, name: 'Female' }, { id: 49, name: 'Others' }]} />
-      <CustomButton label="Submit" loading={loading} onClick={loadData} />
+      <CustomDropdown items={[{ id: 40, name: 'Male' }, { id: 45, name: 'Female' }, { id: 49, name: 'Others' }]} value={gender}
+         onChange={(value) => {
+            setGender(value)
+         }} />
+      {/* <CustomButton label="Submit" loading={loading} onClick={loadData} />
 
       <CustomButton label="Login" loading={loggingIn} onClick={login} />
-      <p>{users.data.names.length}</p>
+      <p>{users.data.names.length}</p> */}
+
+      <RadioButton checked={"Married" === maritalStatus} label={"Married"} onChange={setMaritalStatus} />
+      <RadioButton checked={"Single" === maritalStatus} label={"Single"} onChange={setMaritalStatus} />
+      <RadioButton checked={"Divorced" === maritalStatus} label={"Divorced"} onChange={setMaritalStatus} />
+
       <CustomButton label="Save" loading={users.status === Status.loading} onClick={saveUser} />
    </>)
 }

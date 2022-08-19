@@ -11,7 +11,7 @@ import MainLayout from './Layout/MainLayout'
 import Main from './Layout/Main'
 import { useSelector } from 'react-redux'
 import MainContent from './Layout/MainLayout'
-import { Dashboard, NotFound, Reports, Users } from './Pages'
+import { Dashboard, NotFound, Orders, Reports, Users } from './Pages'
 
 const LoggedInRouter = () => {
     // const { loading, error } = useAppState()
@@ -106,6 +106,7 @@ const AppRouter: React.FC = () => (
                 <Route path={`/dashboard`} element={<Dashboard />} />
                 <Route path={`/users`} element={<Users />} />
                 <Route path={`/reports`} element={<Reports />} />
+                <Route path={`/orders`} element={<Orders />} />
                 <Route path={`/`} element={<Navigate replace to="/dashboard" />} />
                 <Route path="*" element={<NotFound />} />
             </Route>
