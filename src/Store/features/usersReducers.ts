@@ -53,3 +53,19 @@ const usersSlice = createSlice({
 export default usersSlice.reducer
 
 export const { add, remove, loginUser } = usersSlice.actions
+
+
+// export const slice = createSlice({
+//     name: "slice-name",
+//     initialState: {
+//         // ...
+//     },
+//     reducers: {
+//         func01: (state) => {
+//             // ...
+//         },
+//     }
+// });
+
+// export const { func01 } = slice.actions;
+// export default slice.reducer;
