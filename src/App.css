@@ -205,3 +205,47 @@
     max-width: fit-content
   }
 }
+
+.swal2-popup.swal2-toast.swal2-show.popup-error {
+  /* background-color: rgb(245, 218, 218) !important; */
+  border-left-width: 4px;
+  border-left-color: red;
+  border-left-style: solid;
+  /* position: relative !important;
+  top: 20px !important;
+  -webkit-animation: swal2-show 0.5s !important;
+  animation: swal2-show 0.5s !important; */
+  color: red;
+}
+
+.swal2-popup.swal2-toast.swal2-show.popup-success {
+  /* background-color: rgb(226, 247, 226) !important; */
+  border-left-width: 4px;
+  border-left-color: green;
+  border-left-style: solid;
+  color: green;
+  /* position: relative !important;
+  top: 20px !important;
+  -webkit-animation: swal2-show 0.5s !important;
+  animation: swal2-show 0.5s !important; */
+}
+
+/* width */
+.mainContainer::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.mainContainer::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.mainContainer::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.mainContainer::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

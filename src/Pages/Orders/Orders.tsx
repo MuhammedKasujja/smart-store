@@ -1,5 +1,6 @@
 import { Card } from "../../Components"
 import * as yup from "yup"
+import { AppUtils } from "../../Utils"
 
 
 interface Person {
@@ -23,16 +24,21 @@ const Orders: React.FC = () => {
 
 
     const person: Person = {
-        firstName: 'Kasuudja',
+        firstName: 'Kasujja',
         lastname: 'Muhammed',
         age: 60,
     }
 
     const handleValidate = () => {
+        // AppUtils.showNotification('User saved', 'error')
         schema.validate(person).then((data) => {
             console.log('Validate', data)
+            // AppUtils.showAlert({callback:()=>{
+            //     console.log('Callback','Got I love this')
+            // }});
+            AppUtils.showNotification('Form validated', 'success')
         }).catch((err) => {
-            console.log('ErrorValidate: ', err.message)
+            AppUtils.showNotification(err, 'error')
         })
     }
 

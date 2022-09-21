@@ -16,7 +16,7 @@ const MainContent: React.FC = () => {
                         <Sidebar />
                     }
                     {/* Main Content */}
-                    <div className={`${isOpen ? 'w-full' : 'w-screen'} bg-slate-300 p-4  rounded-lg overflow-y-auto `}>
+                    <div className={`${isOpen ? 'w-full' : 'w-screen'} bg-slate-300 p-4  rounded-lg overflow-y-auto mainContainer`}>
                         <p className="cursor-pointer" onClick={() => setOpen((isOpen) => !isOpen)}>X</p>
                         <Outlet />
                     </div>
