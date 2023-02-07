@@ -8,22 +8,28 @@ export function useFetchData(url: string, type: Method) {
 
     useEffect(() => {
         const controller = new AbortController()
+        // const source = axios.CancelToken.source();
         const fetchData = async () => {
             try {
                 const { data: response } = await axios.options(url, {
-                    method: type, signal: controller.signal,
+                    method: type,
+                    signal: controller.signal,
+                    // cancelToken: source.token
                 });
                 setData(response);
             } catch (error) {
-                setError(error)
+                if (!controller.signal.aborted) setError(`${error}`);
+                // if (axios.isCancel(error)) setError(`${error}`)
             } finally { setLoading(false) }
         };
 
         fetchData();
         return () => {
-            controller.abort
+            controller.abort()
+            // source.cancel()
+
         }
-    }, [url]);
+    }, [url, type]);
 
     return {
         data,
