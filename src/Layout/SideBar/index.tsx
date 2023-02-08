@@ -1,28 +1,37 @@
 import SideBarMenuItem from "./SideBarMenuItem";
 import menus from "./Menus";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 
 const SideBar: React.FC = () => {
-  const menuContent = useMemo(() => {
-    return menus.map((item) => {
-      if (item.navheader)
-        return <p className="bg-slate-700 px-2 py-2 mx-2 text-left">{item.navheader}</p>;
-      else {
-        return (
+  const [selectedMenu, setActive] = useState<string|undefined>();
+  const menuContent = menus.map((item) => {
+    if (item.navheader)
+      return (
+        <p className="text-white px-2 py-2 text-left uppercase decoration-4" key={item.name}>
+          {item.navheader}
+        </p>
+      );
+    else {
+      return (
+        <div onClick={() => {
+          setActive(item.name)
+        }}>
           <SideBarMenuItem
             name={item.name!}
             submenu={item.submenu}
             url={item.url!}
             icon={item.icon}
             gate={item.gate}
+            key={item.name}
+            selected={selectedMenu === item.name}
           />
-        );
-      }
-    });
-  }, [menus]);
+        </div>
+      );
+    }
+  });
   return (
     <>
-      <div className="w-80 bg-slate-50 p-4 rounded-lg overflow-y-auto hover:overflow-y-auto">
+      <div className="w-80 bg-[#1a233a] p-4 rounded-lg overflow-y-auto hover:overflow-y-auto text-[#8a99b5]">
         {menuContent}
       </div>
     </>

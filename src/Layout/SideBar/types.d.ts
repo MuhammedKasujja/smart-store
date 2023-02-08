@@ -9,5 +9,6 @@ import { ReactNode } from "react";
 }
 
 export interface MenuItem extends IMenu{
+    selected: boolean
     submenu?: IMenu[]
 }
