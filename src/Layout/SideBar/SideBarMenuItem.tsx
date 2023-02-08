@@ -16,7 +16,7 @@ const SideBarMenuItem: React.FC<MenuItem> = (item) => {
       <div
         className={`p-2 cursor-pointer  mt-1 ${
           selected
-            ? "border-solid border-2 border-[#464d5c] border-r-3 mb-2 rounded-md bg-[#1a233a]"
+            ? "border-solid ring-[1px] ring-[#464d5c] border-r-3 mb-2 rounded-md bg-[#1a233a]"
             : ""
         }`}
       >
@@ -29,12 +29,12 @@ const SideBarMenuItem: React.FC<MenuItem> = (item) => {
         </div>
         {active && (
           <div>
-            <div className="divide-y divide-blue-200"></div>
+            {item.submenu && <hr className="border-1 border-[#464d5c]" />}
             {item.submenu?.map((menu) => (
               <p
                 className={`text-left cursor-pointer ml-1 py-2 ${
                   selectedMenu === menu.name
-                    ? 'bg-[#464d5c] text-[#5A8DEE]'//"bg-[#5a8dee] text-[#5A8DEE] opacity-10"
+                    ? "bg-[#464d5c] text-[#5A8DEE]" //"bg-[#5a8dee] text-[#5A8DEE] opacity-10"
                     : ""
                 }`}
                 key={menu.name}
