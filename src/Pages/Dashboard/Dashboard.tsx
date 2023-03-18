@@ -12,7 +12,7 @@ const DashboardPage: React.FC = () => {
             <DashboadStatusCard label={"Users"} value={"10"} />
         </div>
         {error && <p>{error}</p>}
-
+        
     </>)
 }
 

@@ -2,21 +2,20 @@ import { AppState, Status } from "."
 
 class ApiState<T>{
     status: Status = Status.idle;
-    error: string | null = null;
-    message: string | null = null;
+    error: string | undefined = undefined;
+    message: string | undefined = undefined;
     data: T | undefined = undefined;
 
     constructor(state: AppState<T>) {
         this.data = state.data
         this.error = state.error
         this.message = state.message
+        this.status = state.status
     }
 
     init() {
         return new ApiState({
             status: Status.idle,
-            error: null,
-            message: null,
             data: this.data
         });
     }
@@ -24,16 +23,13 @@ class ApiState<T>{
     loading() {
         return new ApiState({
             status: Status.loading,
-            error: null,
-            message: null,
             data: this.data
         });
     }
 
-    loaded(data: T, message: string) {
+    success(data: T, message?: string) {
         return new ApiState({
             status: Status.succeeded,
-            error: null,
             message: message,
             data: data ?? this.data
         });
@@ -43,7 +39,6 @@ class ApiState<T>{
         return new ApiState({
             status: Status.failed,
             error: error,
-            message: null,
             data: this.data
         });
     }

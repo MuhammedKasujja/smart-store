@@ -41,9 +41,9 @@ export enum Status {
 
 export interface AppState<T>{
     status: Status,
-    error: string | null,
-    message: string | null, 
-    data: T
+    error?: string,
+    message?: string, 
+    data?: T
 }
 
 export interface IUser {
