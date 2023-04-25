@@ -7,7 +7,6 @@ const MainContent = () => {
             <Route path={`/dashboard`} element={<Dashboard />} />
             <Route path={`/users`} element={<Users/>} />
             <Route path={`/`} element={<Navigate replace to="/dashboard" />} />
-            {/* <Route path={`/fancy`} component={dashboardRoutes.FancyDriversTable} /> */}
         </Routes>
     )
 }

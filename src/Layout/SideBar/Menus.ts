@@ -18,7 +18,7 @@ const menus = [
       gate: "passengers.index",
       submenu: [
         {
-          url: "/clients",
+          url: "/users",
           name: "Passengers",
           slug: "clients",
           icon: "bx bx-right-arrow-alt",
@@ -142,7 +142,7 @@ const menus = [
       gate: 'bookings.dashboard',
     },
     {
-      url: "/trips",
+      url: "/orders",
       name: "Ride Requests",
       slug: "trips",
       icon: "check-alt",
@@ -156,7 +156,7 @@ const menus = [
       gate: 'reviews.users',
       submenu: [
         {
-          url: "/ratings",
+          url: "/reports",
           name: "Passengers",
           slug: "passenger-ratings",
           icon: "check-alt",

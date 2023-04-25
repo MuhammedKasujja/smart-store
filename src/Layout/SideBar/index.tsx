@@ -1,21 +1,23 @@
 import SideBarMenuItem from "./SideBarMenuItem";
 import menus from "./Menus";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 const SideBar: React.FC = () => {
-  const [selectedMenu, setActive] = useState<string|undefined>();
+  const [selectedMenu, setActive] = useState<string | undefined>();
+
   const menuContent = menus.map((item) => {
     if (item.navheader)
       return (
-        <p className="text-white px-2 py-2 text-left uppercase decoration-4" key={item.name}>
+        <p
+          className="text-white px-2 py-2 text-left uppercase decoration-4"
+          key={item.name}
+        >
           {item.navheader}
         </p>
       );
     else {
       return (
-        <div onClick={() => {
-          setActive(item.name)
-        }}>
+        <div onClick={() => setActive(item.name)} key={item.name}>
           <SideBarMenuItem
             name={item.name!}
             submenu={item.submenu}
