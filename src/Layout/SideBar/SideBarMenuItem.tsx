@@ -25,8 +25,6 @@ const SideBarMenuItem: React.FC<MenuItem> = (item) => {
     }
   }, [selected]);
 
-  useEffect(() => {}, []);
-
   return (
     <>
       <div

@@ -10,13 +10,13 @@ const MainContent: React.FC = () => {
     }
     return (
         <>
-            <div className="bg-slate-200 p-5 h-screen overflow-hidden pb">
-                <div className="flex gap-4 h-full">
+            <div className="bg-slate-200 p-0 h-screen overflow-hidden">
+                <div className="flex h-full">
                     {isOpen &&
                         <Sidebar />
                     }
                     {/* Main Content */}
-                    <div className={`${isOpen ? 'w-full' : 'w-screen'} bg-slate-300 p-4  rounded-lg overflow-y-auto mainContainer`}>
+                    <div className={`${isOpen ? 'w-full' : 'w-screen'} bg-slate-300 p-4 m-4 rounded-lg overflow-y-auto mainContainer`}>
                         <p className="cursor-pointer" onClick={() => setOpen((isOpen) => !isOpen)}>X</p>
                         <Outlet />
                     </div>
